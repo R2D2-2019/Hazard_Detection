@@ -16,7 +16,7 @@ namespace r2d2::hazard_detection {
             if (frame.request) {
                 continue;
             }
-            const auto gas_value = frame.as_frame_type<frame_type::GAS_DETECTION>...*/
-        }
+            const auto gas_value = frame.as_frame_type<frame_type::GAS_DETECTION>...
+        */
     }
 }
