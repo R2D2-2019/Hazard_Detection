@@ -1,10 +1,12 @@
 #pragma once
 
 #include <base_module.hpp>
+#include <treshold.hpp>
 
 namespace r2d2::hazard_detection {
-    class hazard_detection_c : public base_module_c {
-        const int tempeature_treshold, ppm_treshold;
+    class module_hazard_detection_c : public base_module_c {
+        treshold_c &gas_treshold;
+        treshold_c &object_temp;
 
     public:
         /**
@@ -19,15 +21,13 @@ namespace r2d2::hazard_detection {
          * defects. Ppm means parts per million and and from 10,000 ppm it
          * becomes dangerous. The condition is that a temperature of 400 degrees
          * must be present.
-         * 
+         *
          * @param base_comm_c
          * @param int
          * @param int
          * */
-        hazard_detection_c(base_comm_c &base_comm,
-                           const int &tempeature_treshold = 49,
-                           const int &ppm_treshold = 10'000);
-
+        module_hazard_detection_c(base_comm_c &comm, treshold_c &gas_treshold,
+                                  treshold_c &object_temp);
         void process() override;
     };
 } // namespace r2d2::hazard_detection
